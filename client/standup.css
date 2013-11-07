@@ -1,1 +1,34 @@
-/* CSS declarations go here */
+#team .teamEntry .username {
+	font-weight: bold;
+}
+
+#team .teamEntry .media-body span {
+	display: inline-block;
+	width: 80px;	
+}
+
+#team .teamEntry {
+	padding: 0.5em;
+	margin-bottom: 1em;
+	box-shadow: inset 0px 0px 1px 1px rgba(0,0,0,0.4);
+}
+
+#team .teamEntry .media-body h4, #team .teamEntry .media-body h5 {
+	display: inline-block;
+}
+
+#team .teamEntry .yesterday {
+	color: gray;
+}
+
+.standupForm textarea {
+	display: block;
+	width: 100%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#signInNotice {
+	text-align: center;
+}

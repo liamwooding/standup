@@ -3,13 +3,65 @@
 </head>
 
 <body>
-  {{> hello}}
-  {{loginButtons}}
+  <div class="navbar">
+  	<div class="container">
+	  	<div class="navbar-inner">
+	  		<a class="brand">Standup</a>
+	  		<span class="navbar-text">{{theDate}}</span>
+	  		<div class="pull-right">{{> userProfile}}{{loginButtons}}</div>
+	  	</div>
+	  </div>
+  </div>
+
+  <div class="container row">
+  {{#if user}}
+  	<section class="standupForm well span4">
+		  {{> yesterdayText}}
+
+		  {{> todayText}}
+		</section>
+
+		<section id="team" class="span7">
+			{{> team}}
+		</section>
+  {{else}}
+		<h4 id="signInNotice">Sign in!</h4>
+	{{/if}}
+	</div>
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <h2>ok</h2>
-  <input type="button" value="Click" />
+<template name="userProfile">
+		<span class="navbar-text">{{user.services.github.username}}</span>
+</template>
+
+<template name="todayText">
+		<form id="today">
+		<label for="todayTextTextarea">What are you going to do today?</label>
+			{{#constant}}<textarea id="todayTextTextarea" rows="4">{{user.profile.data.today}}</textarea>{{/constant}}
+		</form>
+</template>
+
+<template name="yesterdayText">
+		<form id="yesterday">
+		<label for="yesterdayTextTextarea">What did you do yesterday?</label>
+			{{#constant}}<textarea id="yesterdayTextTextarea" rows="4">{{user.profile.data.yesterday}}</textarea>{{/constant}}
+		</form>
+</template>
+
+<template name="team">
+	{{#each users}}
+	<div class="media teamEntry">
+		<a class="pull-left">
+			<img src="http://placekitten.com/100/100" class="media-object" title="{{services.github.username}}"></img>
+		</a>
+		<div class="media-body today">
+			<span>Today:</span>
+			<h4 class="media-heading">{{profile.data.today}}</h4>
+		</div>
+		<div class="media-body yesterday">
+		<span>Yesterday:</span>
+			<h5 class="media-heading">{{profile.data.yesterday}}</h5>
+		</div>
+	</div>
+	{{/each}}
 </template>
